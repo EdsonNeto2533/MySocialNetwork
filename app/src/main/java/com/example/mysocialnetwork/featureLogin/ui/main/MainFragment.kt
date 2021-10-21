@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.ui.main
+package com.example.mysocialnetwork.featureLogin.ui.main
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

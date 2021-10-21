@@ -1,8 +1,9 @@
-package com.example.mysocialnetwork
+package com.example.mysocialnetwork.featureLogin.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.mysocialnetwork.ui.main.MainFragment
+import com.example.mysocialnetwork.R
+import com.example.mysocialnetwork.featureLogin.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
