@@ -59,6 +59,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.0-M1'
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito-inline:2.28.1'
 
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
 
     implementation "io.insert-koin:koin-core:3.1.2"
     // Koin main features for Android (Scope,ViewModel ...)
