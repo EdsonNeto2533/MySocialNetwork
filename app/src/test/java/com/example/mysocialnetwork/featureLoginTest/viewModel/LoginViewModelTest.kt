@@ -59,7 +59,7 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `user try to login but generate a excepction`() = mainCoroutineRule.runBlockingTest {
+    fun `user try to login but generate a exception`() = mainCoroutineRule.runBlockingTest {
         Mockito.`when`(repository.loginWithEmailPassword("", "")).thenThrow(RuntimeException::class.java)
         viewModel.loginWithEmailPassword("", "")
         Assert.assertEquals(viewModel.error.value, "Sorry an error have occurred, please try again")
