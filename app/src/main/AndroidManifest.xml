@@ -11,7 +11,7 @@
         android:name=".utilsGeneric.AppStart"
         android:theme="@style/Theme.MySocialNetwork">
         <activity
-            android:name=".featureLogin.ui.main.MainActivity"
+            android:name=".featureLogin.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
