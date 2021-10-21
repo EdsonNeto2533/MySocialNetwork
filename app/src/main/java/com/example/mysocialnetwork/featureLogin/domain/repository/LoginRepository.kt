@@ -1,6 +1,7 @@
 package com.example.mysocialnetwork.featureLogin.domain.repository
 
 import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
+import com.example.mysocialnetwork.featureLogin.domain.utils.UserKeysEnum
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,7 +20,14 @@ class LoginRepository(private val mFirebaseAuth: FirebaseAuth, private val mFire
 
 
     suspend fun createUserInDatabase(mUserModel: UserModel){
+        val map = mutableMapOf<String, Any>()
+        map[UserKeysEnum.USERID.key] = mUserModel.id
+        map[UserKeysEnum.USERNAME.key] = mUserModel.name
+        map[UserKeysEnum.USEREMAIL.key] = mUserModel.email
+        map[UserKeysEnum.USERGENDER.key] = mUserModel.gender
+        map[UserKeysEnum.USERAGE.key] = mUserModel.age
 
+        mFirebaseFirestore.collection("table_user").add(map).await()
     }
 
 
