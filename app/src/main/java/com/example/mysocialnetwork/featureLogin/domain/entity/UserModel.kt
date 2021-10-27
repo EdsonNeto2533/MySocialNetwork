@@ -1,7 +1,7 @@
 package com.example.mysocialnetwork.featureLogin.domain.entity
 
 data class UserModel(
-    val id: String,
+    var id: String,
     val name: String,
     val email: String,
     val gender: String,
