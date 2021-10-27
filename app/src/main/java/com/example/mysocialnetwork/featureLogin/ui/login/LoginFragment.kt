@@ -1,5 +1,6 @@
 package com.example.mysocialnetwork.featureLogin.ui.login
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +10,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.MainFragmentBinding
+import com.example.mysocialnetwork.di.domain
+import com.example.mysocialnetwork.di.viewModels
+import com.example.mysocialnetwork.featureDashboard.ui.DashboardActivity
+import com.example.mysocialnetwork.utilsGeneric.SharedPreferences
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment(R.layout.main_fragment) {
 
@@ -16,13 +23,14 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
         fun newInstance() = LoginFragment()
     }
 
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModel()
     private lateinit var binding: MainFragmentBinding
+    private val sharedPreferences: SharedPreferences by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadViewModels()
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,15 +40,16 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
 
     }
 
-    private fun loadComponents(){
+    private fun loadComponents() {
         binding.btnLogin.setOnClickListener {
             tryLogin()
         }
     }
 
-    private fun loadViewModels(){
+    private fun loadViewModels() {
         viewModel.userLogged.observe(viewLifecycleOwner, {
-
+            sharedPreferences.setUserId(it.uid)
+            startActivity(Intent(requireActivity(), DashboardActivity::class.java))
         })
         viewModel.error.observe(viewLifecycleOwner, {
             Toast.makeText(requireContext(), getString(R.string.error_msg_login), Toast.LENGTH_SHORT).show()
@@ -48,14 +57,11 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
     }
 
 
-    private fun tryLogin(){
-        if (binding.etEmailLogin.text.isNullOrBlank() || binding.etPasswordLogin.text.isNullOrBlank()){
+    private fun tryLogin() {
+        if (binding.etEmailLogin.text.isNullOrBlank() || binding.etPasswordLogin.text.isNullOrBlank()) {
             Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
         } else viewModel.loginWithEmailPassword(binding.etEmailLogin.text.toString(), binding.etPasswordLogin.text.toString())
     }
-
-
-
 
 
 }
