@@ -11,8 +11,8 @@ import java.lang.Exception
 
 class LoginViewModel constructor(private val mRepository: LoginRepository) : ViewModel() {
 
-    private val _error = MutableLiveData<String>()
-    val error: LiveData<String> = _error
+    private val _error = MutableLiveData<Boolean>()
+    val error: LiveData<Boolean> = _error
 
     private val _userLogged = MutableLiveData<FirebaseUser>()
     val userLogged: LiveData<FirebaseUser> = _userLogged
@@ -23,7 +23,7 @@ class LoginViewModel constructor(private val mRepository: LoginRepository) : Vie
             try {
                 _userLogged.value = mRepository.loginWithEmailPassword(email, password)?.user
             } catch (e: Exception){
-                   _error.value = "Sorry an error have occurred, please try again"
+                   _error.value = true
             }
         }
     }

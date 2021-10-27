@@ -4,6 +4,7 @@ import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
 import com.example.mysocialnetwork.featureLogin.domain.utils.UserKeysEnum
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
@@ -28,6 +29,10 @@ class LoginRepository(private val mFirebaseAuth: FirebaseAuth, private val mFire
         map[UserKeysEnum.USERAGE.key] = mUserModel.age
 
         mFirebaseFirestore.collection("table_user").add(map).await()
+    }
+
+    suspend fun getSession(): FirebaseUser?{
+        return mFirebaseAuth.currentUser
     }
 
 

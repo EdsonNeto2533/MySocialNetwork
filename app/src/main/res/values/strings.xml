@@ -3,5 +3,8 @@
     <string name="welcome_login">Bem Vindo</string>
     <string name="password_login">Senha</string>
     <string name="btnLogin_login">Login</string>
+    <string name="fill_all_fields">Preencha todos os campos</string>
+    <string name="error_msg_login">Email ou senha incorretos</string>
     <string name="tv_signUp_login">Ainda não registrado? clique aqui e se registre agora</string>
+    <string name="cb_rememberMe_login">Lembre-se de mim</string>
 </resources>
