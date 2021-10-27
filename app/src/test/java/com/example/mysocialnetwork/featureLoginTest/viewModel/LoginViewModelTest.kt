@@ -1,9 +1,11 @@
 package com.example.mysocialnetwork.featureLoginTest.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
 import com.example.mysocialnetwork.featureLogin.ui.login.LoginViewModel
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -38,6 +40,9 @@ class LoginViewModelTest {
     @Mock
     private lateinit var result: AuthResult
 
+    @Mock
+    lateinit var observer: Observer<FirebaseUser>
+
     @Before
     fun setup() {
         MockitoAnnotations.openMocks(this)
@@ -55,6 +60,7 @@ class LoginViewModelTest {
     fun `user login with email and password`() = mainCoroutineRule.runBlockingTest {
         Mockito.`when`(repository.loginWithEmailPassword("", "")).thenReturn(result)
         viewModel.loginWithEmailPassword("", "")
+        viewModel.userLogged.observeForever(observer)
         Assert.assertEquals(viewModel.userLogged.value, result.user)
     }
 

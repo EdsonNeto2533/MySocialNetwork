@@ -1,6 +1,7 @@
 package com.example.mysocialnetwork.featureLoginTest.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
 import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -45,6 +46,15 @@ class LoginRepositoryTests {
     @Mock
     private lateinit var task: Task<AuthResult>
 
+    @Mock
+    private lateinit var authResult: AuthResult
+
+    @Mock
+    private lateinit var map: MutableMap<String, Any>
+
+    @Mock
+    private lateinit var user: UserModel
+
 
     @Before
     fun setup() {
@@ -62,16 +72,54 @@ class LoginRepositoryTests {
     @Test
     fun `create a user with success`() = runBlocking {
         Mockito.`when`(
-            firebaseAuth.createUserWithEmailAndPassword("testing@test.com", "123456")).thenReturn(task)
-        Mockito.`when`(task.isSuccessful).thenReturn(true)
-        Assert.assertEquals(task.isSuccessful, true)
+            firebaseAuth.createUserWithEmailAndPassword("testing@test.com", "123456")
+        ).thenReturn(task)
+        Mockito.`when`(task.result).thenReturn(authResult)
+        runBlocking {
+            Mockito.`when`(task.await()).thenReturn(authResult)
+        }
+
+
+        val aux = repository.createUserWithEmailPassword("testing@test.com", "123456")
+
+
+        Assert.assertEquals(aux, authResult)
     }
 
+//    @Test
+//    fun `create a user with failure`() = runBlocking {
+//        Mockito.`when`(
+//            firebaseAuth.createUserWithEmailAndPassword("test", "123456")).thenReturn(task)
+//        Mockito.`when`(task.isSuccessful).thenReturn(false)
+//        Assert.assertEquals(task.isSuccessful, false)
+//    }
+
+//    @Test
+//    fun `login a user with failure`() = runBlocking {
+//        Mockito.`when`(
+//            firebaseAuth.signInWithEmailAndPassword("test", "123456")).thenReturn(task)
+//        Mockito.`when`(task.isSuccessful).thenReturn(false)
+//        Assert.assertEquals(task.isSuccessful, false)
+//    }
+
+//    @Test
+//    fun `login a user with success`() = runBlocking {
+//        Mockito.`when`(
+//            firebaseAuth.signInWithEmailAndPassword("test@test.com", "123456")
+//        ).thenReturn(task)
+//        Mockito.`when`(task.isSuccessful).thenReturn(true)
+//        Assert.assertEquals(task.isSuccessful, true)
+//    }
+
     @Test
-    fun `create a user with failure`() = runBlocking {
-        Mockito.`when`(
-            firebaseAuth.createUserWithEmailAndPassword("test", "123456")).thenReturn(task)
-        Mockito.`when`(task.isSuccessful).thenReturn(false)
-        Assert.assertEquals(task.isSuccessful, false)
+    fun `create a user in firestore failure`() = runBlocking {
+        val error = Assert.assertThrows(RuntimeException::class.java) {
+            runBlocking {
+                Mockito.`when`(firebaseFireStore.collection("table_user").add(map))
+                    .thenThrow(RuntimeException::class.java)
+                repository.createUserInDatabase(user)
+            }
+
+        }
     }
 }

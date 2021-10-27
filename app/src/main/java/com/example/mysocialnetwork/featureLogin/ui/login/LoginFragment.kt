@@ -7,26 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mysocialnetwork.R
+import com.example.mysocialnetwork.databinding.MainFragmentBinding
 
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(R.layout.main_fragment) {
 
     companion object {
         fun newInstance() = LoginFragment()
     }
 
     private lateinit var viewModel: LoginViewModel
+    private lateinit var binding: MainFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = MainFragmentBinding.bind(view)
+    }
+
+
+
+
 
 }
