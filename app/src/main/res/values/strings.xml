@@ -5,6 +5,8 @@
     <string name="btnLogin_login">Login</string>
     <string name="fill_all_fields">Preencha todos os campos</string>
     <string name="error_msg_login">Email ou senha incorretos</string>
+    <string name="error_msg_generic">um erro aconteceu, tente mais tarde</string>
+    <string name="userCreated_msg">usuário criado com sucesso!</string>
     <string name="tv_signUp_login">Ainda não registrado? clique aqui e se registre agora</string>
     <string name="cb_rememberMe_login">Lembre-se de mim</string>
 </resources>

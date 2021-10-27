@@ -56,6 +56,7 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
         viewModel.userLogged.observe(viewLifecycleOwner, {
             sharedPreferences.setUserId(it.uid)
             startActivity(Intent(requireActivity(), DashboardActivity::class.java))
+            requireActivity().finish()
         })
         viewModel.error.observe(viewLifecycleOwner, {
             Toast.makeText(requireContext(), getString(R.string.error_msg_login), Toast.LENGTH_SHORT).show()
