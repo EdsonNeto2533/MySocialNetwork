@@ -2,6 +2,7 @@ package com.example.mysocialnetwork.di
 
 import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
 import com.example.mysocialnetwork.featureLogin.ui.login.LoginViewModel
+import com.example.mysocialnetwork.featureLogin.ui.register.RegisterViewModel
 import com.example.mysocialnetwork.utilsGeneric.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,5 +29,8 @@ val domain = module {
 val viewModels = module {
     viewModel {
         LoginViewModel(get())
+    }
+    viewModel {
+        RegisterViewModel(get())
     }
 }

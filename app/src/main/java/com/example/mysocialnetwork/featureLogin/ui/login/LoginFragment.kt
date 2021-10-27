@@ -13,7 +13,10 @@ import com.example.mysocialnetwork.databinding.MainFragmentBinding
 import com.example.mysocialnetwork.di.domain
 import com.example.mysocialnetwork.di.viewModels
 import com.example.mysocialnetwork.featureDashboard.ui.DashboardActivity
+import com.example.mysocialnetwork.featureLogin.ui.MainActivity
+import com.example.mysocialnetwork.featureLogin.ui.register.RegisterFragment
 import com.example.mysocialnetwork.utilsGeneric.SharedPreferences
+import com.example.mysocialnetwork.utilsGeneric.changeFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,6 +46,9 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
     private fun loadComponents() {
         binding.btnLogin.setOnClickListener {
             tryLogin()
+        }
+        binding.tvSignUpLogin.setOnClickListener {
+            (requireActivity() as MainActivity).changeFragment(RegisterFragment.newInstance())
         }
     }
 
