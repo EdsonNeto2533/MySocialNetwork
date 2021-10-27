@@ -9,4 +9,10 @@
     <string name="userCreated_msg">usuário criado com sucesso!</string>
     <string name="tv_signUp_login">Ainda não registrado? clique aqui e se registre agora</string>
     <string name="cb_rememberMe_login">Lembre-se de mim</string>
+    <string name="registerBanner">Cadastre-se</string>
+    <string name="hint_name_register">Nome</string>
+    <string name="hint_password_register">Senha</string>
+    <string name="hint_gender">Genêro</string>
+    <string name="hint_age">Idade</string>
+    <string name="register_btn_text">Cadastrar</string>
 </resources>

@@ -65,7 +65,7 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
 
 
     private fun tryLogin() {
-        if (binding.etEmailLogin.text.isNullOrBlank() || binding.etPasswordLogin.text.isNullOrBlank()) {
+        if (binding.etEmailLogin.text.toString().isNullOrBlank() || binding.etPasswordLogin.text.toString().isNullOrBlank()) {
             Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
         } else viewModel.loginWithEmailPassword(binding.etEmailLogin.text.toString(), binding.etPasswordLogin.text.toString())
     }

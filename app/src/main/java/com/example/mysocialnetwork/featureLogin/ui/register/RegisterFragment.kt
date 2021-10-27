@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.RegisterFragmentBinding
@@ -28,10 +29,36 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
         super.onViewCreated(view, savedInstanceState)
         binding = RegisterFragmentBinding.bind(view)
         loadViewModels()
-
+        loadComponents()
+        loadSpinner()
     }
 
-    private fun loadViewModels(){
+    private fun loadSpinner() {
+        binding.spGenderRegister.setAdapter(ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item, listOf("Masculino", "Feminino")))
+    }
+
+    private fun loadComponents() {
+        binding.btnRegister.setOnClickListener {
+            if (binding.etAgeRegister.text.toString().isNullOrBlank() ||
+                binding.etEmailRegister.text.toString().isNullOrBlank() ||
+                binding.etNameRegister.text.toString().isNullOrBlank() ||
+                binding.spGenderRegister.text.toString().isNullOrBlank() ||
+                binding.etPasswordRegister.text.toString().isNullOrBlank()
+            )
+                Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
+            else registerUser()
+        }
+    }
+
+    private fun registerUser() {
+        viewModel.createUser(binding.etEmailRegister.text.toString(),
+            binding.etPasswordRegister.text.toString(),
+            binding.etEmailRegister.text.toString(),
+            binding.spGenderRegister.text.toString(),
+            binding.etAgeRegister.text.toString().toInt())
+    }
+
+    private fun loadViewModels() {
         viewModel.userCreated.observe(viewLifecycleOwner, {
             Toast.makeText(requireContext(), getString(R.string.userCreated_msg), Toast.LENGTH_SHORT).show()
             (requireActivity() as MainActivity).changeFragment(LoginFragment.newInstance())
@@ -40,7 +67,6 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
             Toast.makeText(requireContext(), getString(R.string.error_msg_generic), Toast.LENGTH_SHORT).show()
         })
     }
-
 
 
 }
