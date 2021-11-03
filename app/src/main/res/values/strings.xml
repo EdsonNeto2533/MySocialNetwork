@@ -16,4 +16,6 @@
     <string name="hint_age">Idade</string>
     <string name="register_btn_text">Cadastrar</string>
     <string name="menu_btn_logout">Deslogar</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>
