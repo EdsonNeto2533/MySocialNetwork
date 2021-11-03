@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardFragment
+import com.example.mysocialnetwork.utilsGeneric.changeFragment
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -11,9 +12,8 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard_activity)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, DashboardFragment.newInstance())
-                .commitNow()
+            changeFragment(DashboardFragment.newInstance())
         }
+
     }
 }

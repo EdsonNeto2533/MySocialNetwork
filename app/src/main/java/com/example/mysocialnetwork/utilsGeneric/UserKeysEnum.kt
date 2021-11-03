@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.featureLogin.domain.utils
+package com.example.mysocialnetwork.utilsGeneric
 
 enum class UserKeysEnum(val key: String) {
     USERNAME("user_Name"),

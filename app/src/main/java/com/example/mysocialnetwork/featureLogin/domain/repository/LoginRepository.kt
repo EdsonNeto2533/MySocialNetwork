@@ -1,7 +1,7 @@
 package com.example.mysocialnetwork.featureLogin.domain.repository
 
 import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
-import com.example.mysocialnetwork.featureLogin.domain.utils.UserKeysEnum
+import com.example.mysocialnetwork.utilsGeneric.UserKeysEnum
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

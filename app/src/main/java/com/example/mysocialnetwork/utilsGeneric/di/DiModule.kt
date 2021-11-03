@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.di
+package com.example.mysocialnetwork.utilsGeneric.di
 
 import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
 import com.example.mysocialnetwork.featureLogin.ui.login.LoginViewModel
