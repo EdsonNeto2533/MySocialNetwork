@@ -45,8 +45,8 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
                 binding.spGenderRegister.text.toString().isNullOrBlank() ||
                 binding.etPasswordRegister.text.toString().isNullOrBlank()
             )
-                Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
-            else registerUser()
+                registerUser()
+            else   Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
         }
     }
 

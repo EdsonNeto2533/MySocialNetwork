@@ -81,7 +81,7 @@
         android:layout_marginTop="30dp"
         android:hint="@string/hint_gender"
         app:boxBackgroundColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/layout_name"
+        app:layout_constraintTop_toBottomOf="@id/layout_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
 

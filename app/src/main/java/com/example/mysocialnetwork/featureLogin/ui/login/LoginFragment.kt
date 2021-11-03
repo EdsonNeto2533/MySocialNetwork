@@ -30,16 +30,13 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
     private lateinit var binding: MainFragmentBinding
     private val sharedPreferences: SharedPreferences by inject()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        loadViewModels()
 
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = MainFragmentBinding.bind(view)
         loadComponents()
+        loadViewModels()
 
     }
 

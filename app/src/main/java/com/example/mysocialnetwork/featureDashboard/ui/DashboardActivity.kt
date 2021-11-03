@@ -2,7 +2,8 @@ package com.example.mysocialnetwork.featureDashboard.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.mysocialnetwork.featureDashboard.ui.ui.main.DashboardFragment
+import com.example.mysocialnetwork.R
+import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardFragment
 
 class DashboardActivity : AppCompatActivity() {
 

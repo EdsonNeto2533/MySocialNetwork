@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.featureDashboard.ui.ui.main
+package com.example.mysocialnetwork.featureDashboard.ui.dashboard
 
 import androidx.lifecycle.ViewModel
 
