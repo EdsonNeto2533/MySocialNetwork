@@ -15,4 +15,5 @@
     <string name="hint_gender">Genêro</string>
     <string name="hint_age">Idade</string>
     <string name="register_btn_text">Cadastrar</string>
+    <string name="menu_btn_logout">Deslogar</string>
 </resources>
