@@ -31,7 +31,6 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
     private val sharedPreferences: SharedPreferences by inject()
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = MainFragmentBinding.bind(view)
@@ -51,6 +50,8 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
 
     private fun loadViewModels() {
         viewModel.userLogged.observe(viewLifecycleOwner, {
+            if (binding.cbRememberMeLogin.isChecked)
+                sharedPreferences.setRememberMe(true)
             sharedPreferences.setUserId(it.uid)
             startActivity(Intent(requireActivity(), DashboardActivity::class.java))
             requireActivity().finish()
