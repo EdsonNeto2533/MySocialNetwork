@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mysocialnetwork.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DashboardFragment : Fragment() {
@@ -15,7 +16,7 @@ class DashboardFragment : Fragment() {
         fun newInstance() = DashboardFragment()
     }
 
-    private lateinit var viewModel: DashboardViewModel
+    private val viewModel: DashboardViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +27,7 @@ class DashboardFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+
         // TODO: Use the ViewModel
     }
 

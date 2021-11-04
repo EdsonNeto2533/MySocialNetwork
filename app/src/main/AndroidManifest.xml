@@ -9,10 +9,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MySocialNetwork">
+        android:theme="@style/Theme.DrawerLayout">
         <activity
             android:name=".featureDashboard.ui.DashboardActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.DrawerLayout.noActionBar"
+            />
         <activity
             android:name=".featureLogin.ui.MainActivity"
             android:exported="true">

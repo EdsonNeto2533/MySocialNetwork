@@ -6,21 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tb_include"
+            layout="@layout/toolbar_dashboard" />
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/main_menu"
-        android:fitsSystemWindows="true">
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/main_menu" />
 
-
-    </com.google.android.material.navigation.NavigationView>
-
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
 
