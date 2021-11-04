@@ -10,8 +10,8 @@ import com.example.mysocialnetwork.databinding.MainFragmentBinding
 import com.example.mysocialnetwork.featureDashboard.ui.DashboardActivity
 import com.example.mysocialnetwork.featureLogin.ui.MainActivity
 import com.example.mysocialnetwork.featureLogin.ui.register.RegisterFragment
-import com.example.mysocialnetwork.utilsGeneric.SharedPreferences
-import com.example.mysocialnetwork.utilsGeneric.changeFragment
+import com.example.mysocialnetwork.generics.utils.SharedPreferences
+import com.example.mysocialnetwork.generics.changeFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

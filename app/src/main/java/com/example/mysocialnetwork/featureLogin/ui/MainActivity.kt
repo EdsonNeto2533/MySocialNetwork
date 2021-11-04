@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.featureLogin.ui.login.LoginFragment
-import com.example.mysocialnetwork.utilsGeneric.changeFragment
+import com.example.mysocialnetwork.generics.changeFragment
 
 class MainActivity : AppCompatActivity() {
 

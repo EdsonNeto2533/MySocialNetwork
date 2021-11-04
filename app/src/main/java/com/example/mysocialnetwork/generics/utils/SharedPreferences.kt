@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.utilsGeneric
+package com.example.mysocialnetwork.generics.utils
 
 import android.content.Context
 import androidx.core.content.edit

@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.utilsGeneric
+package com.example.mysocialnetwork.generics.utils
 
 enum class SPKeysEnum(val key: String) {
     MAINSHARED("key_app"),

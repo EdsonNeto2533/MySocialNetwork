@@ -6,7 +6,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.DashboardActivityBinding
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardFragment
-import com.example.mysocialnetwork.utilsGeneric.changeFragment
+import com.example.mysocialnetwork.generics.changeFragment
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -19,11 +19,6 @@ class DashboardActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             changeFragment(DashboardFragment.newInstance())
         }
-        binding.nvMain.setNavigationItemSelectedListener {
-
-            return@setNavigationItemSelectedListener true
-        }
-
         val toolbar = binding.tbInclude.tbDashboard
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -33,12 +28,14 @@ class DashboardActivity : AppCompatActivity() {
         actionBarDrawerToggle.isDrawerIndicatorEnabled = true
 
         actionBarDrawerToggle.syncState()
+    }
 
 
+    fun drawerListener(){
+        binding.nvMain.setNavigationItemSelectedListener {
 
-
-
-
+            return@setNavigationItemSelectedListener true
+        }
     }
 
     override fun onBackPressed() {

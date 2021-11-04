@@ -1,18 +1,15 @@
 package com.example.mysocialnetwork.featureLogin.ui.register
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.RegisterFragmentBinding
 import com.example.mysocialnetwork.featureLogin.ui.MainActivity
 import com.example.mysocialnetwork.featureLogin.ui.login.LoginFragment
-import com.example.mysocialnetwork.utilsGeneric.changeFragment
+import com.example.mysocialnetwork.generics.changeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : Fragment(R.layout.register_fragment) {

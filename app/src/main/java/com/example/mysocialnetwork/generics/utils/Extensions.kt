@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.utilsGeneric
+package com.example.mysocialnetwork.generics
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

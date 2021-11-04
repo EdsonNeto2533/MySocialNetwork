@@ -1,11 +1,11 @@
-package com.example.mysocialnetwork.utilsGeneric.di
+package com.example.mysocialnetwork.generics.di
 
 import com.example.mysocialnetwork.featureDashboard.domain.repository.DashboardRepository
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardViewModel
 import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
 import com.example.mysocialnetwork.featureLogin.ui.login.LoginViewModel
 import com.example.mysocialnetwork.featureLogin.ui.register.RegisterViewModel
-import com.example.mysocialnetwork.utilsGeneric.SharedPreferences
+import com.example.mysocialnetwork.generics.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import org.koin.android.ext.koin.androidContext

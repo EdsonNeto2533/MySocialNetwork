@@ -1,12 +1,9 @@
 package com.example.mysocialnetwork.featureDashboard.domain.repository
 
 import com.example.mysocialnetwork.featureDashboard.domain.entity.UserDashboardModel
-import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
-import com.example.mysocialnetwork.utilsGeneric.UserKeysEnum
+import com.example.mysocialnetwork.generics.utils.UserKeysEnum
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 class DashboardRepository(private val mFirebaseFirestore: FirebaseFirestore) {
 
