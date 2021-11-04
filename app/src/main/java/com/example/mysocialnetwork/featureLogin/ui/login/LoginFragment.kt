@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.MainFragmentBinding
-import com.example.mysocialnetwork.featureDashboard.ui.DashboardActivity
+import com.example.mysocialnetwork.generics.ui.DashboardActivity
 import com.example.mysocialnetwork.featureLogin.ui.MainActivity
 import com.example.mysocialnetwork.featureLogin.ui.register.RegisterFragment
 import com.example.mysocialnetwork.generics.utils.SharedPreferences

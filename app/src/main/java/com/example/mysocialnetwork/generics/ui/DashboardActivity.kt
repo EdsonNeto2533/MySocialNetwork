@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.featureDashboard.ui
+package com.example.mysocialnetwork.generics.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
