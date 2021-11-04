@@ -6,7 +6,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.DashboardActivityBinding
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardFragment
-import com.example.mysocialnetwork.generics.changeFragment
+import com.example.mysocialnetwork.generics.utils.changeFragment
 
 class DashboardActivity : AppCompatActivity() {
 
