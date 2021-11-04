@@ -19,6 +19,13 @@ class DashboardActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             changeFragment(DashboardFragment.newInstance())
         }
+        setupActionBar()
+        setupDrawerListener()
+
+    }
+
+
+    private fun setupActionBar(){
         val toolbar = binding.tbInclude.tbDashboard
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -31,7 +38,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
 
-    fun drawerListener(){
+    private fun setupDrawerListener(){
         binding.nvMain.setNavigationItemSelectedListener {
 
             return@setNavigationItemSelectedListener true
