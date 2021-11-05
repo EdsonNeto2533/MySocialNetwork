@@ -62,7 +62,11 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupDrawerListener(){
         binding.nvMain.setNavigationItemSelectedListener {
-
+            binding.drawerLayoutMain.closeDrawers()
+            when(it.itemId){
+                R.id.btn_home -> changeFragment(DashboardFragment.newInstance())
+                //R.id.btn_logout -> //TODO
+            }
             return@setNavigationItemSelectedListener true
         }
     }
