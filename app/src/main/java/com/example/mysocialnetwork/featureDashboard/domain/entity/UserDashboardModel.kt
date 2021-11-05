@@ -5,5 +5,6 @@ data class UserDashboardModel(
     val name: String,
     val email: String,
     val gender: String,
-    val age: Int
+    val age: Int,
+    val userImg: String?
 )

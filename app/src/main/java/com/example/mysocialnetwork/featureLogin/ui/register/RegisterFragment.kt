@@ -48,11 +48,12 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
     }
 
     private fun registerUser() {
-        viewModel.createUser(binding.etEmailRegister.text.toString(),
-            binding.etPasswordRegister.text.toString(),
-            binding.etEmailRegister.text.toString(),
-            binding.spGenderRegister.text.toString(),
-            binding.etAgeRegister.text.toString().toInt())
+        viewModel.createUser(
+            email = binding.etEmailRegister.text.toString(),
+            password = binding.etPasswordRegister.text.toString(),
+            name = binding.etNameRegister.text.toString(),
+            gender = binding.spGenderRegister.text.toString(),
+            age = binding.etAgeRegister.text.toString().toInt())
     }
 
     private fun loadViewModels() {

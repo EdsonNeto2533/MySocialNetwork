@@ -9,7 +9,7 @@ import com.example.mysocialnetwork.featureDashboard.domain.repository.DashboardR
 import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
 import kotlinx.coroutines.launch
 
-class DashboardViewModel constructor(val mDashboardRepository: DashboardRepository) : ViewModel() {
+class DashboardViewModel constructor(private val mDashboardRepository: DashboardRepository) : ViewModel() {
 
     private val _userLogged = MutableLiveData<UserDashboardModel>()
     val userLogged: LiveData<UserDashboardModel> = _userLogged
@@ -19,4 +19,6 @@ class DashboardViewModel constructor(val mDashboardRepository: DashboardReposito
             _userLogged.value = mDashboardRepository.getUserDetails(userId)
         }
     }
+
+
 }

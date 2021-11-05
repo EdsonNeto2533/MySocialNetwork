@@ -16,8 +16,9 @@ class DashboardRepository(private val mFirebaseFirestore: FirebaseFirestore) {
                 id = it.id,
                 email = it.data[UserKeysEnum.USEREMAIL.key] as String,
                 name = it.data[UserKeysEnum.USERNAME.key] as String,
-                age = it.data[UserKeysEnum.USERAGE.key] as Int,
-                gender = it.data[UserKeysEnum.USERGENDER.key] as String
+                age = (it.data[UserKeysEnum.USERAGE.key] as Long).toInt(),
+                gender = it.data[UserKeysEnum.USERGENDER.key] as String,
+                userImg = it.data[UserKeysEnum.USERIMG.key] as? String?
             )
         }
         return userDashboardModel
