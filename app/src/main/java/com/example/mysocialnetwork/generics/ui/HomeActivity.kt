@@ -4,17 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.mysocialnetwork.R
-import com.example.mysocialnetwork.databinding.DashboardActivityBinding
+import com.example.mysocialnetwork.databinding.HomeActivityBinding
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardFragment
 import com.example.mysocialnetwork.generics.utils.changeFragment
 
-class DashboardActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
-    private lateinit var binding: DashboardActivityBinding
+    private lateinit var binding: HomeActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DashboardActivityBinding.inflate(layoutInflater)
+        binding = HomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (savedInstanceState == null) {
             changeFragment(DashboardFragment.newInstance())

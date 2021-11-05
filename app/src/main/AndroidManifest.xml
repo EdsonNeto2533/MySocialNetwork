@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DrawerLayout">
         <activity
-            android:name=".generics.ui.DashboardActivity"
+            android:name=".generics.ui.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.DrawerLayout.noActionBar"
             />

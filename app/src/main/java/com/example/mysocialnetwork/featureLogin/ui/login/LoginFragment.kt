@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.MainFragmentBinding
-import com.example.mysocialnetwork.generics.ui.DashboardActivity
+import com.example.mysocialnetwork.generics.ui.HomeActivity
 import com.example.mysocialnetwork.featureLogin.ui.MainActivity
 import com.example.mysocialnetwork.featureLogin.ui.register.RegisterFragment
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
@@ -48,7 +48,7 @@ class LoginFragment : Fragment(R.layout.main_fragment) {
             if (binding.cbRememberMeLogin.isChecked)
                 sharedPreferences.setRememberMe(true)
             sharedPreferences.setUserId(it.uid)
-            startActivity(Intent(requireActivity(), DashboardActivity::class.java))
+            startActivity(Intent(requireActivity(), HomeActivity::class.java))
             requireActivity().finish()
         })
         viewModel.error.observe(viewLifecycleOwner, {
