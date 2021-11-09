@@ -19,4 +19,8 @@
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="menu_btn_home">Home</string>
+    <string name="what_are_you_think_et">No que você esta pensando?</string>
+    <string name="add_post_btn">Postar</string>
+    <string name="cancel_post_btn">Cancelar</string>
+    <string name="tv_dashboard_whats_new">O que há de novo?</string>
 </resources>

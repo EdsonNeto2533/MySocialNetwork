@@ -24,5 +24,10 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment) {
         binding = DashboardFragmentBinding.bind(view)
     }
 
+    private fun loadPage(){
+        viewModel.getPosts()
+    }
+
+
 
 }
