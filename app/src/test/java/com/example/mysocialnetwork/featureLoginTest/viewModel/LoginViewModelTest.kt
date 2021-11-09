@@ -2,8 +2,8 @@ package com.example.mysocialnetwork.featureLoginTest.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
-import com.example.mysocialnetwork.featureLogin.ui.login.LoginViewModel
+import com.example.mysocialnetwork.featureAuth.featureLogin.domain.repository.LoginRepository
+import com.example.mysocialnetwork.featureAuth.featureLogin.ui.LoginViewModel
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +18,6 @@ import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
-import java.lang.Exception
 import java.lang.RuntimeException
 
 @ExperimentalCoroutinesApi

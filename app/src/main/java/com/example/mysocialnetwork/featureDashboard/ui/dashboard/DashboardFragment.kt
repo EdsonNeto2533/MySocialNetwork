@@ -2,9 +2,7 @@ package com.example.mysocialnetwork.featureDashboard.ui.dashboard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mysocialnetwork.R
@@ -13,7 +11,6 @@ import com.example.mysocialnetwork.featureDashboard.domain.entity.PostModel
 import com.example.mysocialnetwork.featureDashboard.domain.entity.UserDashboardModel
 import com.example.mysocialnetwork.featureDashboard.domain.interfaces.PostClick
 import com.example.mysocialnetwork.featureDashboard.ui.adapters.PostAdapter
-import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel

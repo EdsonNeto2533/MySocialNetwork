@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.featureLogin.ui.register
+package com.example.mysocialnetwork.featureAuth.featureRegister.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,8 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.RegisterFragmentBinding
-import com.example.mysocialnetwork.featureLogin.ui.MainActivity
-import com.example.mysocialnetwork.featureLogin.ui.login.LoginFragment
+import com.example.mysocialnetwork.featureAuth.utils.ui.MainActivity
+import com.example.mysocialnetwork.featureAuth.featureLogin.ui.LoginFragment
 import com.example.mysocialnetwork.generics.utils.changeFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

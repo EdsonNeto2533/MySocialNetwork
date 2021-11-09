@@ -1,15 +1,17 @@
-package com.example.mysocialnetwork.featureLogin.ui.register
+package com.example.mysocialnetwork.featureAuth.featureRegister.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
-import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
+import com.example.mysocialnetwork.featureAuth.featureLogin.domain.entity.UserModelLogin
+import com.example.mysocialnetwork.featureAuth.featureLogin.domain.repository.LoginRepository
+import com.example.mysocialnetwork.featureAuth.featureRegister.domain.entity.UserModelRegister
+import com.example.mysocialnetwork.featureAuth.featureRegister.domain.repository.RegisterRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class RegisterViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class RegisterViewModel(private val mRegisterRepository: RegisterRepository) : ViewModel() {
 
 
     private val _userCreated = MutableLiveData<Boolean>()
@@ -22,10 +24,10 @@ class RegisterViewModel(private val loginRepository: LoginRepository) : ViewMode
     fun createUser(email: String, password: String, name: String, gender: String, age: Int) {
         viewModelScope.launch {
             try {
-                val id = loginRepository.createUserWithEmailPassword(email, password)
+                val id = mRegisterRepository.createUserWithEmailPassword(email, password)
                 if (id?.user != null) {
-                    loginRepository.createUserInDatabase(
-                        UserModel(
+                    mRegisterRepository.createUserInDatabase(
+                        UserModelRegister(
                             id.user!!.uid,
                             email = email, name = name, gender = gender, age = age
                         )

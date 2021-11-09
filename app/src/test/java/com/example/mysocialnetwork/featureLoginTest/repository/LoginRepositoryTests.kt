@@ -1,21 +1,18 @@
 package com.example.mysocialnetwork.featureLoginTest.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
-import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
+import com.example.mysocialnetwork.featureAuth.featureLogin.domain.entity.UserModelLogin
+import com.example.mysocialnetwork.featureAuth.featureLogin.domain.repository.LoginRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.rpc.context.AttributeContext
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.*
 import org.junit.runner.RunWith
@@ -53,7 +50,7 @@ class LoginRepositoryTests {
     private lateinit var map: MutableMap<String, Any>
 
     @Mock
-    private lateinit var user: UserModel
+    private lateinit var userLogin: UserModelLogin
 
 
     @Before
@@ -117,7 +114,7 @@ class LoginRepositoryTests {
             runBlocking {
                 Mockito.`when`(firebaseFireStore.collection("table_user").add(map))
                     .thenThrow(RuntimeException::class.java)
-                repository.createUserInDatabase(user)
+                repository.createUserInDatabase(userLogin)
             }
 
         }

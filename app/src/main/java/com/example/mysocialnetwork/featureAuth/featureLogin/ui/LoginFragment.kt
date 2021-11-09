@@ -1,4 +1,4 @@
-package com.example.mysocialnetwork.featureLogin.ui.login
+package com.example.mysocialnetwork.featureAuth.featureLogin.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.widget.Toast
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.MainFragmentBinding
 import com.example.mysocialnetwork.generics.ui.HomeActivity
-import com.example.mysocialnetwork.featureLogin.ui.MainActivity
-import com.example.mysocialnetwork.featureLogin.ui.register.RegisterFragment
+import com.example.mysocialnetwork.featureAuth.utils.ui.MainActivity
+import com.example.mysocialnetwork.featureAuth.featureRegister.ui.RegisterFragment
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
 import com.example.mysocialnetwork.generics.utils.changeFragment
 import org.koin.android.ext.android.inject

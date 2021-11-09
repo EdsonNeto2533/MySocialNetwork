@@ -1,10 +1,10 @@
-package com.example.mysocialnetwork.featureLogin.ui.login
+package com.example.mysocialnetwork.featureAuth.featureLogin.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mysocialnetwork.featureLogin.domain.repository.LoginRepository
+import com.example.mysocialnetwork.featureAuth.featureLogin.domain.repository.LoginRepository
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 import java.lang.Exception

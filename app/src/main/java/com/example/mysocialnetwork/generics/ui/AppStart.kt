@@ -1,8 +1,11 @@
 package com.example.mysocialnetwork.generics.ui
 
 import android.app.Application
+import com.example.mysocialnetwork.featureAuth.utils.di.diAuth
+import com.example.mysocialnetwork.featureAuth.utils.di.viewModelsAuth
+import com.example.mysocialnetwork.featureDashboard.di.diDashboard
+import com.example.mysocialnetwork.featureDashboard.di.viewModelDashboard
 import com.example.mysocialnetwork.generics.di.domain
-import com.example.mysocialnetwork.generics.di.viewModels
 
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -14,7 +17,7 @@ class AppStart: Application() {
         startKoin {
             androidLogger()
             androidContext(this@AppStart)
-            modules(domain, viewModels)
+            modules(domain, diDashboard, diAuth, viewModelsAuth, viewModelDashboard)
         }
         super.onCreate()
     }

@@ -16,7 +16,7 @@
             android:theme="@style/Theme.DrawerLayout.noActionBar"
             />
         <activity
-            android:name=".featureLogin.ui.MainActivity"
+            android:name=".featureAuth.utils.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

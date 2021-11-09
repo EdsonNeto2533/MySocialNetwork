@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.mysocialnetwork.featureDashboard.domain.entity.PostModel
 import com.example.mysocialnetwork.featureDashboard.domain.entity.UserDashboardModel
 import com.example.mysocialnetwork.featureDashboard.domain.repository.DashboardRepository
-import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
