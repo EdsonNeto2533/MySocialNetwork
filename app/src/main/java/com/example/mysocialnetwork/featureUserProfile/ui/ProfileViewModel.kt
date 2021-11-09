@@ -9,7 +9,7 @@ import com.example.mysocialnetwork.featureUserProfile.domain.entity.UserModelPro
 import com.example.mysocialnetwork.featureUserProfile.domain.repository.UserProfileRepository
 import kotlinx.coroutines.launch
 
-class ProfileViewModel(val mUserProfileRepository: UserProfileRepository) : ViewModel() {
+class ProfileViewModel(private val mUserProfileRepository: UserProfileRepository) : ViewModel() {
 
     private val _user = MutableLiveData<UserModelProfile>()
     val user: LiveData<UserModelProfile> = _user

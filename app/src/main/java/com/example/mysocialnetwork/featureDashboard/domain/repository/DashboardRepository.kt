@@ -16,7 +16,7 @@ class DashboardRepository(private val mFirebaseFirestore: FirebaseFirestore) {
         val response = task.await()
         response.forEach {
             userDashboardModel = UserDashboardModel(
-                id = it.id,
+                id = it.data[UserKeysEnum.USERID.key] as String,
                 email = it.data[UserKeysEnum.USEREMAIL.key] as String,
                 name = it.data[UserKeysEnum.USERNAME.key] as String,
                 age = (it.data[UserKeysEnum.USERAGE.key] as Long).toInt(),

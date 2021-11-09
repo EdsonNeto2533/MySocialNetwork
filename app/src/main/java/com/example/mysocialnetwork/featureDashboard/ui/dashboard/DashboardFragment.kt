@@ -11,7 +11,10 @@ import com.example.mysocialnetwork.featureDashboard.domain.entity.PostModel
 import com.example.mysocialnetwork.featureDashboard.domain.entity.UserDashboardModel
 import com.example.mysocialnetwork.featureDashboard.domain.interfaces.PostClick
 import com.example.mysocialnetwork.featureDashboard.ui.adapters.PostAdapter
+import com.example.mysocialnetwork.featureUserProfile.ui.ProfileFragment
+import com.example.mysocialnetwork.generics.ui.HomeActivity
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
+import com.example.mysocialnetwork.generics.utils.changeFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Calendar
@@ -81,7 +84,7 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), PostClick {
     }
 
     override fun profileClick(mPostModel: PostModel) {
-        TODO("Not yet implemented")
+        (requireActivity() as HomeActivity).changeFragment(ProfileFragment(mPostModel.postOwnerId))
     }
 
 
