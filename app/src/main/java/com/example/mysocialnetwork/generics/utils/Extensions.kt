@@ -12,9 +12,3 @@ fun AppCompatActivity.changeFragment(fragment: Fragment) {
 }
 
 
-//fun AppCompatActivity.changeFragment2(fragment: Fragment) {
-//    supportFragmentManager.beginTransaction()
-//        .replace(R.id.container2, fragment)
-//        .addToBackStack(null).commit()
-//}
-

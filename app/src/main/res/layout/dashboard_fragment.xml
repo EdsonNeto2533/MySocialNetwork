@@ -17,12 +17,12 @@
         android:id="@+id/tv_whats_new"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/tv_dashboard_whats_new"
         android:textSize="30sp"
-        android:layout_marginTop="10dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/input_post"
-        app:layout_constraintBottom_toTopOf="@id/rv_dashboard"/>
+        app:layout_constraintBottom_toTopOf="@id/rv_dashboard"
+        app:layout_constraintTop_toBottomOf="@id/input_post" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_dashboard"
