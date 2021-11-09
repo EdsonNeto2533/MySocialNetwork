@@ -25,6 +25,7 @@ class PostAdapter : ListAdapter<PostModel, ViewHolderPosts>(DiffUtilsPosts()) {
     }
 
     fun update(newList: List<PostModel>){
+        postList.clear()
         postList.addAll(newList)
         submitList(postList.toMutableList())
     }

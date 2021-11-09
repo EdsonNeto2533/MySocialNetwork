@@ -11,6 +11,7 @@ import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardFragme
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardViewModel
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
 import com.example.mysocialnetwork.generics.utils.changeFragment
+import com.example.mysocialnetwork.generics.utils.changeFragment2
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
         binding = HomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if (savedInstanceState == null) {
-            changeFragment(DashboardFragment.newInstance())
+            changeFragment2(DashboardFragment.newInstance())
         }
         setupActionBar()
         setupDrawerListener()
