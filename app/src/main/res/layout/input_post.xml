@@ -7,7 +7,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_add_post"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:hint="@string/what_are_you_think_et"
         app:layout_constraintTop_toTopOf="parent">
 
