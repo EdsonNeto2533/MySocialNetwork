@@ -13,6 +13,7 @@ import com.example.mysocialnetwork.featureDashboard.domain.entity.PostModel
 import java.util.zip.Inflater
 
 class PostAdapter : ListAdapter<PostModel, ViewHolderPosts>(DiffUtilsPosts()) {
+    private val postList = mutableListOf<PostModel>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPosts {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.post_model, parent, false)
         return ViewHolderPosts(view)
@@ -21,6 +22,11 @@ class PostAdapter : ListAdapter<PostModel, ViewHolderPosts>(DiffUtilsPosts()) {
     override fun onBindViewHolder(holder: ViewHolderPosts, position: Int) {
         val post = getItem(position)
         holder.bind(post)
+    }
+
+    fun update(newList: List<PostModel>){
+        postList.addAll(newList)
+        submitList(postList.toMutableList())
     }
 }
 

@@ -28,6 +28,12 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment) {
         viewModel.getPosts()
     }
 
+    private fun loadObservers(){
+        viewModel.postList.observe(viewLifecycleOwner, {
+
+        })
+    }
+
 
 
 }
