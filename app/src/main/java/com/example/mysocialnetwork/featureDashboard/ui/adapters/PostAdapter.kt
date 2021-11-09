@@ -10,9 +10,10 @@ import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.InputPostBinding
 import com.example.mysocialnetwork.databinding.PostModelBinding
 import com.example.mysocialnetwork.featureDashboard.domain.entity.PostModel
+import com.example.mysocialnetwork.featureDashboard.domain.interfaces.PostClick
 import java.util.zip.Inflater
 
-class PostAdapter : ListAdapter<PostModel, ViewHolderPosts>(DiffUtilsPosts()) {
+class PostAdapter(val mPostClick: PostClick) : ListAdapter<PostModel, ViewHolderPosts>(DiffUtilsPosts()) {
     private val postList = mutableListOf<PostModel>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPosts {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.post_model, parent, false)
@@ -22,6 +23,9 @@ class PostAdapter : ListAdapter<PostModel, ViewHolderPosts>(DiffUtilsPosts()) {
     override fun onBindViewHolder(holder: ViewHolderPosts, position: Int) {
         val post = getItem(position)
         holder.bind(post)
+        holder.itemView.setOnClickListener {
+            mPostClick.profileClick(post)
+        }
     }
 
     fun update(newList: List<PostModel>){

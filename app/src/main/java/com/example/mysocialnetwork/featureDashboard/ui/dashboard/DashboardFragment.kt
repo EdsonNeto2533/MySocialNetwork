@@ -11,6 +11,7 @@ import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.DashboardFragmentBinding
 import com.example.mysocialnetwork.featureDashboard.domain.entity.PostModel
 import com.example.mysocialnetwork.featureDashboard.domain.entity.UserDashboardModel
+import com.example.mysocialnetwork.featureDashboard.domain.interfaces.PostClick
 import com.example.mysocialnetwork.featureDashboard.ui.adapters.PostAdapter
 import com.example.mysocialnetwork.featureLogin.domain.entity.UserModel
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
@@ -19,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Calendar
 
 
-class DashboardFragment : Fragment(R.layout.dashboard_fragment) {
+class DashboardFragment : Fragment(R.layout.dashboard_fragment), PostClick {
 
     companion object {
         fun newInstance() = DashboardFragment()
@@ -28,7 +29,7 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment) {
     private val viewModel: DashboardViewModel by viewModel()
     private val mSharedPreferences: SharedPreferences by inject()
     private lateinit var userLogged: UserDashboardModel
-    private val mPostAdapter = PostAdapter()
+    private val mPostAdapter = PostAdapter(this)
     private lateinit var binding: DashboardFragmentBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,6 +81,10 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment) {
                 Toast.makeText(requireContext(), getString(R.string.error_msg_generic), Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun profileClick(mPostModel: PostModel) {
+        TODO("Not yet implemented")
     }
 
 
