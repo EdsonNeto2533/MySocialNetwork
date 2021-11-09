@@ -46,7 +46,7 @@ class DashboardRepository(private val mFirebaseFirestore: FirebaseFirestore) {
         return postList
     }
 
-    suspend fun newPost(postModel: PostModel){
+    suspend fun addPost(postModel: PostModel){
         val map = mutableMapOf<String, Any>()
         map[PostKeysEnum.POSTOWNERNAME.key] = postModel.postOwnerName
         map[PostKeysEnum.POSTTEXT.key] = postModel.postText
