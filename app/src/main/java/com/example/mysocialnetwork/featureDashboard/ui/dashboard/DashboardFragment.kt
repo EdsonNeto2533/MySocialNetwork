@@ -70,7 +70,7 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment) {
 
     private fun loadObservers() {
         viewModel.postList.observe(viewLifecycleOwner, { postList ->
-            mPostAdapter.update(postList.sortedBy { it.postDate })
+            mPostAdapter.update(postList.sortedBy { it.postDate }.reversed())
         })
         viewModel.userLogged.observe(viewLifecycleOwner, {
             userLogged = it
