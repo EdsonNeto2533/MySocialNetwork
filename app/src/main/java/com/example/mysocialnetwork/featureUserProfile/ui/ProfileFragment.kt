@@ -36,10 +36,10 @@ class ProfileFragment(val userId: String) : Fragment(R.layout.profile_fragment) 
     }
 
     private fun loadUser(mUserModelProfile: UserModelProfile) {
-        binding.tvUserName.text = mUserModelProfile.name
-        binding.tvUserEmail.text = mUserModelProfile.email
-        binding.tvUserGender.text = mUserModelProfile.gender
-        binding.tvUserAge.text = mUserModelProfile.age.toString()
+        binding.tvUserName.text = "Nome: ${mUserModelProfile.name}"
+        binding.tvUserEmail.text = "Email: ${mUserModelProfile.email}"
+        binding.tvUserGender.text = "Genero: ${mUserModelProfile.gender}"
+        binding.tvUserAge.text = "Idade: ${mUserModelProfile.age}"
     }
 
     private fun loadComponents() {

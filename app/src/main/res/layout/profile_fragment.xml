@@ -23,28 +23,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="30sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tv_user_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="30sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tv_user_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="30sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tv_user_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="30sp" />
+            android:textSize="22sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_user_profile_posts"
