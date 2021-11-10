@@ -70,6 +70,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        supportFragmentManager.popBackStack()
+        if (supportFragmentManager.backStackEntryCount <= 1)
+            finish()
+        else supportFragmentManager.popBackStack()
     }
 }
