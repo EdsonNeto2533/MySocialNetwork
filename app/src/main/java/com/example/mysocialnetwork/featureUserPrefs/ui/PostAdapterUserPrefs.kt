@@ -17,7 +17,7 @@ import com.example.mysocialnetwork.featureUserPrefs.domain.entity.PostModelUserP
 import com.example.mysocialnetwork.featureUserPrefs.domain.interfaces.ClickUserPrefs
 import java.util.zip.Inflater
 
-class PostAdapterUserPrefs(val mClickUserPrefs: ClickUserPrefs) : ListAdapter<PostModelUserPrefs, ViewHolderPostsUserPrefs>(DiffUtilsPosts()) {
+class PostAdapterUserPrefs(private val mClickUserPrefs: ClickUserPrefs) : ListAdapter<PostModelUserPrefs, ViewHolderPostsUserPrefs>(DiffUtilsPosts()) {
     private val postList = mutableListOf<PostModelUserPrefs>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPostsUserPrefs {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.post_model_user_prefs, parent, false)
