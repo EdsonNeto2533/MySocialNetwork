@@ -76,6 +76,7 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }
+                //R.id.btn_user_pref -> //TODO
             }
             return@setNavigationItemSelectedListener true
         }
