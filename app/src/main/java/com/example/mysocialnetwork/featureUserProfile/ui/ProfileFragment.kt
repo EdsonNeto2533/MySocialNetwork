@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.ProfileFragmentBinding
 import com.example.mysocialnetwork.featureUserProfile.domain.entity.UserModelProfile
@@ -40,6 +41,7 @@ class ProfileFragment(val userId: String) : Fragment(R.layout.profile_fragment) 
         binding.tvUserEmail.text = "Email: ${mUserModelProfile.email}"
         binding.tvUserGender.text = "Genero: ${mUserModelProfile.gender}"
         binding.tvUserAge.text = "Idade: ${mUserModelProfile.age}"
+        Glide.with(requireContext()).load(mUserModelProfile.getImg()).into(binding.ivUserAvatar)
     }
 
     private fun loadComponents() {

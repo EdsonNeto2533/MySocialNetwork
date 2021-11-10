@@ -33,25 +33,24 @@ class HomeActivity : AppCompatActivity() {
         sharedPreferences.getUserId()?.let { viewModel.getUserDetails(it) }
     }
 
-    private fun loadViewModels(){
+    private fun loadViewModels() {
         viewModel.userLogged.observe(this, {
             binding.nvMain.getHeaderView(0).apply {
                 val headerBinding = DrawerHeaderBinding.bind(this)
-                headerBinding.tvUserEmail.text = it.email
-                headerBinding.tvUserName.text = it.name
-                if (it.userImg != null) Glide.with(this).load(it.userImg).into(headerBinding.ivUserAvatar)
-                else Glide.with(this).load(R.drawable.ic_home).into(headerBinding.ivUserAvatar)
+                headerBinding.tvUserEmail.text = "Email: ${it.email}"
+                headerBinding.tvUserName.text = "Nome: ${it.name}"
+                Glide.with(this).load(it.getImg()).into(headerBinding.ivUserAvatar)
             }
         })
     }
 
 
-    private fun setupActionBar(){
+    private fun setupActionBar() {
         val toolbar = binding.tbInclude.tbDashboard
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val actionBarDrawerToggle = ActionBarDrawerToggle(this, binding.drawerLayoutMain,toolbar, R.string.open, R.string.close)
+        val actionBarDrawerToggle = ActionBarDrawerToggle(this, binding.drawerLayoutMain, toolbar, R.string.open, R.string.close)
         binding.drawerLayoutMain.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.isDrawerIndicatorEnabled = true
 
@@ -60,10 +59,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    private fun setupDrawerListener(){
+    private fun setupDrawerListener() {
         binding.nvMain.setNavigationItemSelectedListener {
             binding.drawerLayoutMain.closeDrawers()
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.btn_home -> changeFragment(DashboardFragment.newInstance())
                 //R.id.btn_logout -> //TODO
             }
