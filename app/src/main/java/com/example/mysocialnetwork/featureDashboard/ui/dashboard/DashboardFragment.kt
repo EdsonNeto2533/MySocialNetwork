@@ -37,15 +37,18 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), PostClick {
         binding = DashboardFragmentBinding.bind(view)
         loadComponents()
         loadObservers()
+        mSharedPreferences.getUserId()?.let { viewModel.getUserDetails(it) }
         loadPage()
     }
 
     private fun loadPage() {
         viewModel.getPosts()
-        mSharedPreferences.getUserId()?.let { viewModel.getUserDetails(it) }
     }
 
     private fun loadComponents() {
+        binding.swipeLayout.setOnRefreshListener {
+            loadPage()
+        }
         binding.rvDashboard.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvDashboard.adapter = mPostAdapter
         binding.inputPost.btnAddPost.setOnClickListener {
@@ -73,6 +76,7 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), PostClick {
     private fun loadObservers() {
         viewModel.postList.observe(viewLifecycleOwner, { postList ->
             mPostAdapter.update(postList.sortedBy { it.postDate }.reversed())
+            binding.swipeLayout.isRefreshing = false
         })
         viewModel.userLogged.observe(viewLifecycleOwner, {
             userLogged = it
