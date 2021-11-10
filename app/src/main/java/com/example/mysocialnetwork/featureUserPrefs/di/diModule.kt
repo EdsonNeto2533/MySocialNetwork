@@ -1,19 +1,20 @@
 package com.example.mysocialnetwork.featureUserPrefs.di
 
+import com.example.mysocialnetwork.featureUserPrefs.domain.repository.UserPrefsRepository
 import com.example.mysocialnetwork.featureUserPrefs.ui.UserPrefsViewModel
-import com.example.mysocialnetwork.featureUserProfile.domain.repository.UserProfileRepository
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
 val diUserPrefs = module {
     factory {
-        UserProfileRepository(mFirebaseFirestore = get())
+        UserPrefsRepository(mFirebaseFirestore = get())
     }
 }
 
 
 val userPrefsViewModel = module {
-    factory {
+    viewModel {
         UserPrefsViewModel(mUserPrefsRepository = get())
     }
 }

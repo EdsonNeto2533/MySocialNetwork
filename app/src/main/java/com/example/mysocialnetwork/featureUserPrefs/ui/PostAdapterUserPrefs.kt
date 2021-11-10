@@ -20,7 +20,7 @@ import java.util.zip.Inflater
 class PostAdapterUserPrefs(val mClickUserPrefs: ClickUserPrefs) : ListAdapter<PostModelUserPrefs, ViewHolderPostsUserPrefs>(DiffUtilsPosts()) {
     private val postList = mutableListOf<PostModelUserPrefs>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPostsUserPrefs {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.post_model, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.post_model_user_prefs, parent, false)
         return ViewHolderPostsUserPrefs(view)
     }
 

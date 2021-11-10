@@ -11,6 +11,7 @@ import com.example.mysocialnetwork.databinding.HomeActivityBinding
 import com.example.mysocialnetwork.featureAuth.utils.ui.MainActivity
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardFragment
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardViewModel
+import com.example.mysocialnetwork.featureUserPrefs.ui.UserPrefsFragment
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
 import com.example.mysocialnetwork.generics.utils.changeFragment
 import org.koin.android.ext.android.inject
@@ -76,7 +77,7 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }
-                //R.id.btn_user_pref -> //TODO
+                R.id.btn_user_pref -> changeFragment(UserPrefsFragment())
             }
             return@setNavigationItemSelectedListener true
         }
