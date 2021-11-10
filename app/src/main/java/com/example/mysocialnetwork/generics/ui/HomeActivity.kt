@@ -1,5 +1,6 @@
 package com.example.mysocialnetwork.generics.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -7,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.DrawerHeaderBinding
 import com.example.mysocialnetwork.databinding.HomeActivityBinding
+import com.example.mysocialnetwork.featureAuth.utils.ui.MainActivity
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardFragment
 import com.example.mysocialnetwork.featureDashboard.ui.dashboard.DashboardViewModel
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
@@ -19,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: HomeActivityBinding
     private val viewModel: DashboardViewModel by viewModel()
     private val sharedPreferences: SharedPreferences by inject()
+    private val homeViewModel: HomeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +33,11 @@ class HomeActivity : AppCompatActivity() {
         setupActionBar()
         setupDrawerListener()
         loadViewModels()
-        sharedPreferences.getUserId()?.let { viewModel.getUserDetails(it) }
+        if (sharedPreferences.getUserId().isNullOrBlank()) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        } else
+            viewModel.getUserDetails(sharedPreferences.getUserId()!!)
     }
 
     private fun loadViewModels() {
@@ -63,7 +70,12 @@ class HomeActivity : AppCompatActivity() {
             binding.drawerLayoutMain.closeDrawers()
             when (it.itemId) {
                 R.id.btn_home -> changeFragment(DashboardFragment.newInstance())
-                //R.id.btn_logout -> //TODO
+                R.id.btn_logout -> {
+                    homeViewModel.logout()
+                    sharedPreferences.setUserId("")
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
             }
             return@setNavigationItemSelectedListener true
         }

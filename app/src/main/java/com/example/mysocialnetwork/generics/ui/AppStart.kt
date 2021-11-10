@@ -9,6 +9,7 @@ import com.example.mysocialnetwork.featureDashboard.di.viewModelDashboard
 import com.example.mysocialnetwork.featureUserProfile.di.diProfile
 import com.example.mysocialnetwork.featureUserProfile.di.viewModelProfile
 import com.example.mysocialnetwork.generics.di.domain
+import com.example.mysocialnetwork.generics.di.homeViewModel
 
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -21,7 +22,7 @@ class AppStart : Application() {
         startKoin {
             androidLogger()
             androidContext(this@AppStart)
-            modules(domain, viewModelProfile, diDashboard, diAuth, viewModelsAuth, viewModelDashboard, diProfile)
+            modules(domain,homeViewModel, viewModelProfile, diDashboard, diAuth, viewModelsAuth, viewModelDashboard, diProfile)
         }
         super.onCreate()
     }
