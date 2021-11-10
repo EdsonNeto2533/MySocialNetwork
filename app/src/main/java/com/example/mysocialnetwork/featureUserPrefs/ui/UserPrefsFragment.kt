@@ -7,26 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mysocialnetwork.R
+import com.example.mysocialnetwork.databinding.UserPrefsFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class UserPrefsFragment : Fragment() {
+class UserPrefsFragment : Fragment(R.layout.user_prefs_fragment) {
 
     companion object {
         fun newInstance() = UserPrefsFragment()
     }
 
-    private lateinit var viewModel: UserPrefsViewModel
+    private val viewModel: UserPrefsViewModel by viewModel()
+    private lateinit var binding: UserPrefsFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.user_prefs_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(UserPrefsViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = UserPrefsFragmentBinding.bind(view)
     }
 
 }

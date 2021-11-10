@@ -17,7 +17,6 @@ class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
         val task = mFirebaseFirestore.collection("table_user").whereEqualTo(UserKeysEnum.USERID.key, userId).get()
         val response = task.await()
         response.forEach {
-            println("alo")
             user = UserPrefsModel(
                 dbId = it.id,
                 email = it.data[UserKeysEnum.USEREMAIL.key] as String,
@@ -53,13 +52,14 @@ class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
     }
 
 
-    suspend fun deletePost(mPostModelUserPrefs: PostModelUserPrefs) {
+    suspend fun deletePost(mPostModelUserPrefs: PostModelUserPrefs, finish: () -> Unit) {
         val task = mPostModelUserPrefs.postId?.let { mFirebaseFirestore.collection("table_post").document(it).delete() }
         task?.await()
+        finish.invoke()
     }
 
 
-    suspend fun editUser(mUserPrefsModel: UserPrefsModel) {
+    suspend fun editUser(mUserPrefsModel: UserPrefsModel, finish: () -> Unit) {
         val map = mutableMapOf<String, Any?>()
         map[UserKeysEnum.USERNAME.key] = mUserPrefsModel.name
         map[UserKeysEnum.USERIMG.key] = mUserPrefsModel.userImg
@@ -67,6 +67,7 @@ class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
         map[UserKeysEnum.USERGENDER.key] = mUserPrefsModel.gender
         val task = mFirebaseFirestore.collection("table_user").document(mUserPrefsModel.dbId).update(map)
         task.await()
+        finish.invoke()
     }
 
 }

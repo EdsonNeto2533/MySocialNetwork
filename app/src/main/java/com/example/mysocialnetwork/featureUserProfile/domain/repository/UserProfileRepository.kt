@@ -16,7 +16,6 @@ class UserProfileRepository(private val mFirebaseFirestore: FirebaseFirestore) {
         val task = mFirebaseFirestore.collection("table_user").whereEqualTo(UserKeysEnum.USERID.key, userId).get()
         val response = task.await()
         response.forEach {
-            println("alo")
             user = UserModelProfile(
                 id = it.id,
                 email = it.data[UserKeysEnum.USEREMAIL.key] as String,
