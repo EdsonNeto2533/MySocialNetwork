@@ -49,7 +49,6 @@ class HomeActivity : AppCompatActivity() {
         val toolbar = binding.tbInclude.tbDashboard
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         val actionBarDrawerToggle = ActionBarDrawerToggle(this, binding.drawerLayoutMain, toolbar, R.string.open, R.string.close)
         binding.drawerLayoutMain.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.isDrawerIndicatorEnabled = true

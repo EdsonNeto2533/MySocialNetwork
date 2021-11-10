@@ -1,6 +1,7 @@
 package com.example.mysocialnetwork.generics.ui
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.mysocialnetwork.featureAuth.utils.di.diAuth
 import com.example.mysocialnetwork.featureAuth.utils.di.viewModelsAuth
 import com.example.mysocialnetwork.featureDashboard.di.diDashboard
@@ -16,6 +17,7 @@ import org.koin.core.context.startKoin
 class AppStart : Application() {
 
     override fun onCreate() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         startKoin {
             androidLogger()
             androidContext(this@AppStart)
