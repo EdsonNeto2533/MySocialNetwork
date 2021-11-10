@@ -16,35 +16,35 @@
             android:id="@+id/iv_user_avatar"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="100dp" />
+             />
 
         <TextView
             android:id="@+id/tv_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="22sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_user_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="22sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_user_gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="22sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_user_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textSize="22sp" />
+            android:textSize="16sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_user_profile_posts"
