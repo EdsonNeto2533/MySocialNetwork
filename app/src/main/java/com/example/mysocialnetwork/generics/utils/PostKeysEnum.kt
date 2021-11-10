@@ -5,7 +5,8 @@ enum class PostKeysEnum(val key: String) {
     POSTID("post_id"),
     POSTOWNERID("post_owner_id"),
     POSTOWNERNAME("post_owner_name"),
-    POSTDATE("post_date")
+    POSTDATE("post_date"),
+    POSTOWNERIMG("post_owner_img")
 }
 
 

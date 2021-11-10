@@ -63,7 +63,8 @@ class DashboardFragment : Fragment(R.layout.dashboard_fragment), PostClick {
                 postText = binding.inputPost.etAddPost.text.toString(),
                 postOwnerName = userLogged.name,
                 postOwnerId = userLogged.id,
-                postDate = Calendar.getInstance().time
+                postDate = Calendar.getInstance().time,
+                ownerImg = userLogged.userImg
             )
         )
         loadPage()

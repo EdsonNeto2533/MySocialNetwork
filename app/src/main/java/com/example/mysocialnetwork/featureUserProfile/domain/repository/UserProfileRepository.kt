@@ -42,7 +42,8 @@ class UserProfileRepository(private val mFirebaseFirestore: FirebaseFirestore) {
                     postDate = datePost.toDate(),
                     postOwnerId = it.data[PostKeysEnum.POSTOWNERID.key] as String,
                     postOwnerName = it.data[PostKeysEnum.POSTOWNERNAME.key] as String,
-                    postText = it.data[PostKeysEnum.POSTTEXT.key] as String
+                    postText = it.data[PostKeysEnum.POSTTEXT.key] as String,
+                    ownerImg = it.data[PostKeysEnum.POSTOWNERIMG.key] as? String?
                 )
             )
         }

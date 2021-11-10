@@ -23,4 +23,5 @@
     <string name="add_post_btn">Postar</string>
     <string name="cancel_post_btn">Limpar</string>
     <string name="tv_dashboard_whats_new">O que há de novo?</string>
+    <string name="profile_text_recent_posts">Posts Recentes</string>
 </resources>
