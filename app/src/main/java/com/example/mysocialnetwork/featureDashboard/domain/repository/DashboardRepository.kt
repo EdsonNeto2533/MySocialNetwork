@@ -48,11 +48,12 @@ class DashboardRepository(private val mFirebaseFirestore: FirebaseFirestore) {
     }
 
     suspend fun addPost(postModel: PostModel){
-        val map = mutableMapOf<String, Any>()
+        val map = mutableMapOf<String, Any?>()
         map[PostKeysEnum.POSTOWNERNAME.key] = postModel.postOwnerName
         map[PostKeysEnum.POSTTEXT.key] = postModel.postText
         map[PostKeysEnum.POSTOWNERID.key] = postModel.postOwnerId
         map[PostKeysEnum.POSTDATE.key] = postModel.postDate
+        map[PostKeysEnum.POSTOWNERIMG.key] = postModel.ownerImg
         mFirebaseFirestore.collection("table_post").add(map).await()
     }
 }
