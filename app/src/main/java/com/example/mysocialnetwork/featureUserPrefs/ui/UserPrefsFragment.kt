@@ -43,17 +43,20 @@ class UserPrefsFragment : Fragment(R.layout.user_prefs_fragment), ClickUserPrefs
     }
 
 
-    private fun loadUserDetails(mUserPrefsModel: UserPrefsModel){
-        binding.tvUserName.text = "Nome: ${mUserPrefsModel.name}"
-        binding.tvUserEmail.text = "Email: ${mUserPrefsModel.email}"
-        binding.tvUserGender.text = "Genero: ${mUserPrefsModel.gender}"
-        binding.tvUserAge.text = "Idade: ${mUserPrefsModel.age}"
+    private fun loadUserDetails(mUserPrefsModel: UserPrefsModel) {
+        binding.etUserName.setText(mUserPrefsModel.name)
+        binding.etUserEmail.setText(mUserPrefsModel.email)
+        binding.etUserGender.setText(mUserPrefsModel.gender)
+        binding.etUserName.setText(mUserPrefsModel.age)
         Glide.with(requireContext()).load(mUserPrefsModel.getImg()).into(binding.ivUserAvatar)
     }
 
     private fun loadComponents() {
         binding.rvUserProfilePosts.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvUserProfilePosts.adapter = postAdapter
+        binding.btnEdit.setOnClickListener {
+            //TODO
+        }
 
     }
 
