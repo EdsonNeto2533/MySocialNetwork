@@ -36,7 +36,7 @@ class PostAdapterUserPrefs(private val mClickUserPrefs: ClickUserPrefs) : ListAd
         postList = mutableListOf()
         postList.addAll(newList)
         submitList(postList.toMutableList())
-        //notifyDataSetChanged()
+        notifyDataSetChanged()
     }
 
     fun getPosts(): List<PostModelUserPrefs> = postList
