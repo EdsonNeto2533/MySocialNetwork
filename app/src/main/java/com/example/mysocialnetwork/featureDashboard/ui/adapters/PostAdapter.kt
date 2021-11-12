@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.InputPostBinding
 import com.example.mysocialnetwork.databinding.PostModelBinding
@@ -53,9 +54,10 @@ class ViewHolderPosts(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val binding = PostModelBinding.bind(itemView)
 
     fun bind(postModel: PostModel) {
+        val radius = itemView.context.resources.getDimensionPixelSize(R.dimen.corner_radius)
         binding.tvNameOwner.text = postModel.postOwnerName
         binding.tvPostText.text = postModel.postText
-        Glide.with(binding.root).load(postModel.getImg()).into(binding.ivPostOwner)
+        Glide.with(binding.root).load(postModel.getImg()).transform(RoundedCorners(radius)).into(binding.ivPostOwner)
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.mysocialnetwork.featureUserPrefs.domain.repository
 
+import android.net.Uri
 import com.example.mysocialnetwork.featureUserPrefs.domain.entity.PostModelUserPrefs
 import com.example.mysocialnetwork.featureUserPrefs.domain.entity.UserPrefsModel
 import com.example.mysocialnetwork.featureUserProfile.domain.entity.PostModelProfile
@@ -8,11 +9,12 @@ import com.example.mysocialnetwork.generics.utils.PostKeysEnum
 import com.example.mysocialnetwork.generics.utils.UserKeysEnum
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
-class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
+class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore, private val mFirebaseStorage: FirebaseStorage) {
 
     suspend fun getUserDetails(userId: String): UserPrefsModel? {
         var user: UserPrefsModel? = null
@@ -32,6 +34,15 @@ class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
         return user
     }
 
+    suspend fun uploadImgToFirebase(img: String, imgUri: Uri, callback: (Uri) -> Unit) {
+        val reference = mFirebaseStorage.reference
+        val fileRef = reference.child("${System.currentTimeMillis()}.$img")
+        fileRef.putFile(imgUri).addOnCompleteListener {
+            fileRef.downloadUrl.addOnSuccessListener {
+                callback(it)
+            }
+        }
+    }
 
     suspend fun getPostsFromUser(userId: String): List<PostModelUserPrefs> {
         val postList = mutableListOf<PostModelUserPrefs>()
@@ -71,8 +82,8 @@ class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
         task.await()
     }
 
-    suspend fun updatePosts(postList: List<PostModelUserPrefs>, finish: () -> Unit){
-        withContext(Dispatchers.Main){
+    suspend fun updatePosts(postList: List<PostModelUserPrefs>, finish: () -> Unit) {
+        withContext(Dispatchers.Main) {
             postList.forEach { newPost ->
                 val map = mutableMapOf<String, Any?>()
                 map[PostKeysEnum.POSTOWNERNAME.key] = newPost.postOwnerName

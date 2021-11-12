@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.mysocialnetwork.R
 import com.example.mysocialnetwork.databinding.DrawerHeaderBinding
 import com.example.mysocialnetwork.databinding.HomeActivityBinding
@@ -48,10 +49,11 @@ class HomeActivity : AppCompatActivity() {
     private fun loadViewModels() {
         viewModel.userLogged.observe(this, {
             binding.nvMain.getHeaderView(0).apply {
+                val radius = this@HomeActivity.resources.getDimensionPixelSize(R.dimen.corner_radius)
                 val headerBinding = DrawerHeaderBinding.bind(this)
                 headerBinding.tvUserEmail.text = "Email: ${it.email}"
                 headerBinding.tvUserName.text = "Nome: ${it.name}"
-                Glide.with(this).load(it.getImg()).into(headerBinding.ivUserAvatar)
+                Glide.with(this).load(it.getImg()).transform(RoundedCorners(radius)).into(headerBinding.ivUserAvatar)
             }
         })
     }

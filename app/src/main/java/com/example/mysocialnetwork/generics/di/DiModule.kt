@@ -10,6 +10,7 @@ import com.example.mysocialnetwork.generics.ui.HomeViewModel
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -19,6 +20,8 @@ val domain = module {
         FirebaseAuth.getInstance()
     }
     single { FirebaseFirestore.getInstance() }
+
+    single { FirebaseStorage.getInstance() }
 
     factory {
         HomeRepository(mFirebaseAuth = get())

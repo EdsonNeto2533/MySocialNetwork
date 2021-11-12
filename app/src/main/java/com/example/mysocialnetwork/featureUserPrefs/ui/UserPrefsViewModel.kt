@@ -1,5 +1,6 @@
 package com.example.mysocialnetwork.featureUserPrefs.ui
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,6 +21,9 @@ class UserPrefsViewModel(private val mUserPrefsRepository: UserPrefsRepository) 
     private val _userPostsList = MutableLiveData<List<PostModelUserPrefs>>()
     val userPostsList: LiveData<List<PostModelUserPrefs>> = _userPostsList
 
+    private val _userImg = MutableLiveData<Uri>()
+    val userImg: LiveData<Uri> = _userImg
+
     fun editUser(mUserPrefsModel: UserPrefsModel) {
         viewModelScope.launch {
             mUserPrefsRepository.editUser(mUserPrefsModel)
@@ -38,6 +42,14 @@ class UserPrefsViewModel(private val mUserPrefsRepository: UserPrefsRepository) 
         viewModelScope.launch {
             mUserPrefsRepository.deletePost(mPostModelUserPrefs) {
                 _reload.value = true
+            }
+        }
+    }
+
+    fun uploadImgToFirebase(img: String, imgUri: Uri){
+        viewModelScope.launch {
+            mUserPrefsRepository.uploadImgToFirebase(img, imgUri){
+                _userImg.value = it
             }
         }
     }

@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 val diUserPrefs = module {
     factory {
-        UserPrefsRepository(mFirebaseFirestore = get())
+        UserPrefsRepository(mFirebaseFirestore = get(), mFirebaseStorage = get())
     }
 }
 

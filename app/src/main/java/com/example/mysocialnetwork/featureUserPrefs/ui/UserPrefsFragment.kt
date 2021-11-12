@@ -1,11 +1,12 @@
 package com.example.mysocialnetwork.featureUserPrefs.ui
 
-import androidx.lifecycle.ViewModelProvider
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.webkit.MimeTypeMap
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.mysocialnetwork.R
@@ -64,6 +65,9 @@ class UserPrefsFragment : Fragment(R.layout.user_prefs_fragment), ClickUserPrefs
             binding.btnSave.visibility = View.INVISIBLE
             enableOrDisableFields(false)
         }
+        binding.ivUserAvatar.setOnClickListener {
+            userLoadImg()
+        }
     }
 
     private fun updateUser(){
@@ -101,11 +105,38 @@ class UserPrefsFragment : Fragment(R.layout.user_prefs_fragment), ClickUserPrefs
             loadPage()
             (requireActivity() as HomeActivity).loadUser()
         })
-
+        viewModel.userImg.observe(viewLifecycleOwner, {
+            userLogged?.apply {
+                this.userImg = it.toString()
+                updateUser()
+            }
+        })
     }
 
     override fun clickDelete(mPostModelUserPrefs: PostModelUserPrefs) {
         viewModel.deletePost(mPostModelUserPrefs)
+    }
+
+    fun userLoadImg() {
+        val galleryIntent = Intent()
+        galleryIntent.type = "image/*"
+        galleryIntent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(galleryIntent, 2)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 2 && data != null && resultCode == RESULT_OK) {
+            val imgUri = data.data!!
+            viewModel.uploadImgToFirebase(getFileExtension(imgUri), imgUri)
+        }
+    }
+
+    fun getFileExtension(imgUri: Uri): String {
+        val mime = MimeTypeMap.getSingleton()
+        val imgDone =
+            mime.getExtensionFromMimeType(requireContext().contentResolver.getType(imgUri))
+        return imgDone!!
     }
 
 }
