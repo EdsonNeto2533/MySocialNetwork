@@ -1,5 +1,6 @@
 package com.example.mysocialnetwork.featureLoginTest.viewModel
 
+import android.net.Uri
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.mysocialnetwork.featureUserProfile.domain.entity.PostModelProfile
 import com.example.mysocialnetwork.featureUserProfile.domain.entity.UserModelProfile
@@ -49,6 +50,7 @@ class ProfileViewModelTest {
     private lateinit var userId: String
 
 
+
     @Before
     fun setup() {
         MockitoAnnotations.openMocks(this)
@@ -89,7 +91,6 @@ class ProfileViewModelTest {
             runBlocking { Mockito.`when`(repository.getPostsFromUser(userId)).thenThrow(RuntimeException::class.java) }
             viewModel.getUserDetails(userId)
         }
-
     }
 
 
