@@ -3,10 +3,10 @@ package com.example.mysocialnetwork.featureUserPrefs.domain.entity
 data class UserPrefsModel(
     var id: String,
     val dbId: String,
-    val name: String,
+    var name: String,
     val email: String,
-    val gender: String,
-    val age: Int,
+    var gender: String,
+    var age: Int,
     val userImg: String?
 ) {
     fun getImg(): String {

@@ -34,6 +34,10 @@ class HomeActivity : AppCompatActivity() {
         setupActionBar()
         setupDrawerListener()
         loadViewModels()
+        loadUser()
+    }
+
+    fun loadUser(){
         if (sharedPreferences.getUserId().isNullOrBlank()) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()

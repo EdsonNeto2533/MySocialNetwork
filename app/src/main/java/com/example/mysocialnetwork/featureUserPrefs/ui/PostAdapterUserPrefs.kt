@@ -18,7 +18,7 @@ import com.example.mysocialnetwork.featureUserPrefs.domain.interfaces.ClickUserP
 import java.util.zip.Inflater
 
 class PostAdapterUserPrefs(private val mClickUserPrefs: ClickUserPrefs) : ListAdapter<PostModelUserPrefs, ViewHolderPostsUserPrefs>(DiffUtilsPosts()) {
-    private val postList = mutableListOf<PostModelUserPrefs>()
+    private var postList = mutableListOf<PostModelUserPrefs>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPostsUserPrefs {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.post_model_user_prefs, parent, false)
         return ViewHolderPostsUserPrefs(view)
@@ -33,10 +33,13 @@ class PostAdapterUserPrefs(private val mClickUserPrefs: ClickUserPrefs) : ListAd
     }
 
     fun update(newList: List<PostModelUserPrefs>){
-        postList.clear()
+        postList = mutableListOf()
         postList.addAll(newList)
         submitList(postList.toMutableList())
+        //notifyDataSetChanged()
     }
+
+    fun getPosts(): List<PostModelUserPrefs> = postList
 }
 
 

@@ -22,7 +22,13 @@ class UserPrefsViewModel(private val mUserPrefsRepository: UserPrefsRepository) 
 
     fun editUser(mUserPrefsModel: UserPrefsModel) {
         viewModelScope.launch {
-            mUserPrefsRepository.editUser(mUserPrefsModel) {
+            mUserPrefsRepository.editUser(mUserPrefsModel)
+        }
+    }
+
+    fun updatePosts(list: List<PostModelUserPrefs>){
+        viewModelScope.launch {
+            mUserPrefsRepository.updatePosts(list){
                 _reload.value = true
             }
         }

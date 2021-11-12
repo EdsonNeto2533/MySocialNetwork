@@ -13,6 +13,7 @@ import com.example.mysocialnetwork.databinding.UserPrefsFragmentBinding
 import com.example.mysocialnetwork.featureUserPrefs.domain.entity.PostModelUserPrefs
 import com.example.mysocialnetwork.featureUserPrefs.domain.entity.UserPrefsModel
 import com.example.mysocialnetwork.featureUserPrefs.domain.interfaces.ClickUserPrefs
+import com.example.mysocialnetwork.generics.ui.HomeActivity
 import com.example.mysocialnetwork.generics.utils.SharedPreferences
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -47,7 +48,7 @@ class UserPrefsFragment : Fragment(R.layout.user_prefs_fragment), ClickUserPrefs
         binding.etUserName.setText(mUserPrefsModel.name)
         binding.etUserEmail.setText(mUserPrefsModel.email)
         binding.etUserGender.setText(mUserPrefsModel.gender)
-        binding.etUserName.setText(mUserPrefsModel.age)
+        binding.etUserAge.setText(mUserPrefsModel.age.toString())
         Glide.with(requireContext()).load(mUserPrefsModel.getImg()).into(binding.ivUserAvatar)
     }
 
@@ -55,9 +56,36 @@ class UserPrefsFragment : Fragment(R.layout.user_prefs_fragment), ClickUserPrefs
         binding.rvUserProfilePosts.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvUserProfilePosts.adapter = postAdapter
         binding.btnEdit.setOnClickListener {
-            //TODO
+            enableOrDisableFields(true)
+            binding.btnSave.visibility = View.VISIBLE
         }
+        binding.btnSave.setOnClickListener {
+            updateUser()
+            binding.btnSave.visibility = View.INVISIBLE
+            enableOrDisableFields(false)
+        }
+    }
 
+    private fun updateUser(){
+        userLogged?.apply {
+            this.name = binding.etUserName.text.toString()
+            this.age = binding.etUserAge.text.toString().toInt()
+            this.gender = binding.etUserGender.text.toString()
+            val postList = postAdapter.getPosts()
+            postList.forEach { post ->
+                post.postOwnerName = this.name
+                post.ownerImg = this.userImg
+            }
+
+            viewModel.editUser(this)
+            viewModel.updatePosts(postList)
+        }
+    }
+
+    private fun enableOrDisableFields(action: Boolean){
+        binding.etUserName.isEnabled = action
+        binding.etUserGender.isEnabled = action
+        binding.etUserAge.isEnabled = action
     }
 
 
@@ -69,12 +97,15 @@ class UserPrefsFragment : Fragment(R.layout.user_prefs_fragment), ClickUserPrefs
         viewModel.userPostsList.observe(viewLifecycleOwner, {
             postAdapter.update(it)
         })
+        viewModel.reload.observe(viewLifecycleOwner, {
+            loadPage()
+            (requireActivity() as HomeActivity).loadUser()
+        })
 
     }
 
     override fun clickDelete(mPostModelUserPrefs: PostModelUserPrefs) {
         viewModel.deletePost(mPostModelUserPrefs)
-        loadPage()
     }
 
 }

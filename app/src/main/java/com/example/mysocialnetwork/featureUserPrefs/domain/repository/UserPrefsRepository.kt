@@ -8,7 +8,9 @@ import com.example.mysocialnetwork.generics.utils.PostKeysEnum
 import com.example.mysocialnetwork.generics.utils.UserKeysEnum
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
 
@@ -59,7 +61,7 @@ class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
     }
 
 
-    suspend fun editUser(mUserPrefsModel: UserPrefsModel, finish: () -> Unit) {
+    suspend fun editUser(mUserPrefsModel: UserPrefsModel) {
         val map = mutableMapOf<String, Any?>()
         map[UserKeysEnum.USERNAME.key] = mUserPrefsModel.name
         map[UserKeysEnum.USERIMG.key] = mUserPrefsModel.userImg
@@ -67,6 +69,18 @@ class UserPrefsRepository(private val mFirebaseFirestore: FirebaseFirestore) {
         map[UserKeysEnum.USERGENDER.key] = mUserPrefsModel.gender
         val task = mFirebaseFirestore.collection("table_user").document(mUserPrefsModel.dbId).update(map)
         task.await()
+    }
+
+    suspend fun updatePosts(postList: List<PostModelUserPrefs>, finish: () -> Unit){
+        withContext(Dispatchers.Main){
+            postList.forEach { newPost ->
+                val map = mutableMapOf<String, Any?>()
+                map[PostKeysEnum.POSTOWNERNAME.key] = newPost.postOwnerName
+                map[PostKeysEnum.POSTOWNERIMG.key] = newPost.ownerImg
+                val task = newPost.postId?.let { postId -> mFirebaseFirestore.collection("table_post").document(postId).update(map) }
+                task?.await()
+            }
+        }
         finish.invoke()
     }
 
