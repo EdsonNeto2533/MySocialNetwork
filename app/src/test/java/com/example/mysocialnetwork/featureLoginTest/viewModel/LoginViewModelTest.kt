@@ -70,4 +70,6 @@ class LoginViewModelTest {
         Assert.assertEquals(viewModel.error.value, "Sorry an error have occurred, please try again")
     }
 
+
+
 }
