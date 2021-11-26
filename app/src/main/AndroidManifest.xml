@@ -11,10 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DrawerLayout">
         <activity
+            android:name=".featureSplash.ui.SplashActivity"
+            android:exported="true" />
+        <activity
             android:name=".generics.ui.HomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.DrawerLayout.noActionBar"
-            />
+            android:theme="@style/Theme.DrawerLayout.noActionBar" />
         <activity
             android:name=".featureAuth.utils.ui.MainActivity"
             android:exported="true">
